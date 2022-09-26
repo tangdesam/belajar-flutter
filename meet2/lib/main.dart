@@ -77,14 +77,25 @@ class FirstScreen extends StatelessWidget {
         width: 400,
         height: 100,
         margin: const EdgeInsets.all(10),
-        child: Row(
+        child: Column(
+          // yang sering dipake biasanya MainAxisAlignment.spaceEvenly dan MainAxisAlignment.spaceBetween
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: const <Widget>[
             Icon(Icons.share),
             Icon(Icons.thumb_up),
-            Icon(Icons.thumb_down),
+            Text('Halo', style: TextStyle(fontSize: 20),)
           ],
         ),
+
+        // child: Row(
+        //   // yang sering dipake biasanya MainAxisAlignment.spaceEvenly dan MainAxisAlignment.spaceBetween
+        //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        //   children: const <Widget>[
+        //     Icon(Icons.share),
+        //     Icon(Icons.thumb_up),
+        //     Icon(Icons.thumb_down),
+        //   ],
+        // ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
