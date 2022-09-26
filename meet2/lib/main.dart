@@ -61,9 +61,9 @@ class FirstScreen extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           color: Colors.red,
-          shape: BoxShape.rectangle,
+          shape: BoxShape.circle,
           border: Border.all(color: Colors.green, width: 3),
-          borderRadius: BorderRadius.circular(10), // buat roundrect
+          // borderRadius: BorderRadius.circular(10), // buat roundrect
           boxShadow: const [
             BoxShadow(
               color: Colors.black,
@@ -74,10 +74,11 @@ class FirstScreen extends StatelessWidget {
         ),
         // color: Colors.blue,
         padding: const EdgeInsets.all(10),
-        width: 200,
+        width: 400,
         height: 100,
         margin: const EdgeInsets.all(10),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: const <Widget>[
             Icon(Icons.share),
             Icon(Icons.thumb_up),
