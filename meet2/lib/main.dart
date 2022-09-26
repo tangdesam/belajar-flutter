@@ -59,9 +59,11 @@ class FirstScreen extends StatelessWidget {
       //   child: Text("Hello world"),
       // ),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           color: Colors.red,
-          shape: BoxShape.circle,
+          shape: BoxShape.rectangle,
+          border: Border.all(color: Colors.green, width: 3),
+          borderRadius: BorderRadius.circular(10), // buat roundrect
           boxShadow: const [
             BoxShadow(
               color: Colors.black,
@@ -75,9 +77,12 @@ class FirstScreen extends StatelessWidget {
         width: 200,
         height: 100,
         margin: const EdgeInsets.all(10),
-        child: const Text(
-          'Halo ',
-          style: TextStyle(fontSize: 48)
+        child: Row(
+          children: const <Widget>[
+            Icon(Icons.share),
+            Icon(Icons.thumb_up),
+            Icon(Icons.thumb_down),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
