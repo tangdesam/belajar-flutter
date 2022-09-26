@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'detail_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -29,19 +31,3 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class DetailPage extends StatelessWidget {
-  const DetailPage({Key? key}): super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea( // supaya tidak terlalu atas (tempatnya jam, sinyal, dll)
-        child: Column(
-          children: const <Widget>[
-            Text('Rujak Cingur TVRI'),
-          ],
-        ),
-      ),
-    );
-  }
-}
