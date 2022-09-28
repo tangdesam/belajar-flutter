@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:meet3/model/game_info.dart';
 
 class DetailPage extends StatelessWidget {
-  const DetailPage({Key? key}): super(key: key);
+  final GameInfo gameInfo;
+  const DetailPage({Key? key, required GameInfo this.gameInfo}): super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,10 +14,10 @@ class DetailPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Image.asset('images/starcraft.jpg'),
+              Image.asset(gameInfo.banner),
               Container(
                 margin: const EdgeInsets.only(top: 16, left: 16),
-                child: const Text('StarCraft',
+                child: Text(gameInfo.name,
                     style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
@@ -32,14 +34,14 @@ class DetailPage extends StatelessWidget {
                       children: <Widget>[
                         Icon(Icons.calendar_today),
                         SizedBox(height: 8,),
-                        Text('31-Mar-1998')
+                        Text(gameInfo.releaseDate)
                       ],
                     ),
                     Column(
                       children: <Widget>[
                         Icon(Icons.account_balance),
                         SizedBox(height: 8,),
-                        Text('Blizzard')
+                        Text(gameInfo.publisher)
                       ],
                     ),
                     Column(
@@ -66,35 +68,43 @@ class DetailPage extends StatelessWidget {
                 child:
                   ListView(
                     scrollDirection: Axis.horizontal,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(10.0),
-                          child:  Image.network('https://cdn.vox-cdn.com/thumbor/EBt6HUM8C3Ro4mTRFXR76EI47e4=/0x0:1920x1080/1200x800/filters:focal(252x242:558x548)/cdn.vox-cdn.com/uploads/chorus_image/image/55523673/Game2_Space_ProtossRush_SpectatorPerspective_01.0.jpg'),
-                        )
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Image.network('https://www.gamespot.com/a/uploads/original/123/1239113/3105107-184087-starcraft.png'),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Image.network('https://assets.reedpopcdn.com/starcraft-remastered-out-this-summer-1490599238622.jpg/BROK/thumbnail/1600x900/format/jpg/quality/80/starcraft-remastered-out-this-summer-1490599238622.jpg'),
-                      ),
-
-
-
-                    ],
+                    children: gameInfo.imageUrls.map((url) {
+                        return Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10.0),
+                            child:  Image.network(url),
+                          ),
+                        );
+                    }).toList(),
+                    // children: [
+                    //   Padding(
+                    //     padding: const EdgeInsets.all(4.0),
+                    //     child: ClipRRect(
+                    //       borderRadius: BorderRadius.circular(10.0),
+                    //       child:  Image.network('https://cdn.vox-cdn.com/thumbor/EBt6HUM8C3Ro4mTRFXR76EI47e4=/0x0:1920x1080/1200x800/filters:focal(252x242:558x548)/cdn.vox-cdn.com/uploads/chorus_image/image/55523673/Game2_Space_ProtossRush_SpectatorPerspective_01.0.jpg'),
+                    //     ),
+                    //   ),
+                    //   Padding(
+                    //     padding: const EdgeInsets.all(4.0),
+                    //     child: ClipRRect(
+                    //       borderRadius: BorderRadius.circular(10.0),
+                    //       child: Image.network('https://www.gamespot.com/a/uploads/original/123/1239113/3105107-184087-starcraft.png'),
+                    //     ),
+                    //   ),
+                    //   Padding(
+                    //     padding: const EdgeInsets.all(4.0),
+                    //     child: ClipRRect(
+                    //       borderRadius: BorderRadius.circular(10.0),
+                    //       child: Image.network('https://assets.reedpopcdn.com/starcraft-remastered-out-this-summer-1490599238622.jpg/BROK/thumbnail/1600x900/format/jpg/quality/80/starcraft-remastered-out-this-summer-1490599238622.jpg'),
+                    //     ),
+                    //   ),
+                    // ],
                   ),
-
               ),
-
-
             ],
           ),
         ),
-
       ),
     );
   }
