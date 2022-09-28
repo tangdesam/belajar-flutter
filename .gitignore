@@ -85,4 +85,5 @@ lint/tmp/
 # lint/reports/
 
 #ga jalan
-.dart_tool/
+**.dart_tool/
+**.idea/
