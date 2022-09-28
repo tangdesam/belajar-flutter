@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meet3/home_screen.dart';
 
 import 'detail_page.dart';
 
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const DetailPage(),
+      // home: const DetailPage(),
+      home: HomeScreen(),
     );
   }
 }
