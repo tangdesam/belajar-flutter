@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({Key? key}): super(key: key);
@@ -24,6 +25,7 @@ class DetailPage extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 48),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Column(
                       children: <Widget>[
@@ -58,7 +60,32 @@ class DetailPage extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ),
-              Image.network('https://www.gamespot.com/a/uploads/original/123/1239113/3105107-184087-starcraft.png'),
+              SizedBox( // pembungkus untuk fix height
+                height: 150,
+                child:
+                  ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Image.network('https://cdn.vox-cdn.com/thumbor/EBt6HUM8C3Ro4mTRFXR76EI47e4=/0x0:1920x1080/1200x800/filters:focal(252x242:558x548)/cdn.vox-cdn.com/uploads/chorus_image/image/55523673/Game2_Space_ProtossRush_SpectatorPerspective_01.0.jpg'),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Image.network('https://www.gamespot.com/a/uploads/original/123/1239113/3105107-184087-starcraft.png'),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Image.network('https://assets.reedpopcdn.com/starcraft-remastered-out-this-summer-1490599238622.jpg/BROK/thumbnail/1600x900/format/jpg/quality/80/starcraft-remastered-out-this-summer-1490599238622.jpg'),
+                      ),
+
+
+
+                    ],
+                  ),
+
+              ),
+
 
             ],
           ),
