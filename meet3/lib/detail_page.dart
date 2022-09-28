@@ -68,7 +68,10 @@ class DetailPage extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(4.0),
-                        child: Image.network('https://cdn.vox-cdn.com/thumbor/EBt6HUM8C3Ro4mTRFXR76EI47e4=/0x0:1920x1080/1200x800/filters:focal(252x242:558x548)/cdn.vox-cdn.com/uploads/chorus_image/image/55523673/Game2_Space_ProtossRush_SpectatorPerspective_01.0.jpg'),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10.0),
+                          child:  Image.network('https://cdn.vox-cdn.com/thumbor/EBt6HUM8C3Ro4mTRFXR76EI47e4=/0x0:1920x1080/1200x800/filters:focal(252x242:558x548)/cdn.vox-cdn.com/uploads/chorus_image/image/55523673/Game2_Space_ProtossRush_SpectatorPerspective_01.0.jpg'),
+                        )
                       ),
                       Padding(
                         padding: const EdgeInsets.all(4.0),
