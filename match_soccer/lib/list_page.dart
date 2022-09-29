@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:match_soccer/main.dart';
+
+
 
 class ListPage extends StatelessWidget {
   ListPage({Key? key}): super(key: key);
@@ -9,7 +12,15 @@ class ListPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Match Soccer'),
       ),
-      body: const Text('body'),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Image.asset('images/manutd.png'),
+            Image.asset('images/liv.png'),
+            Image.asset('images/arsenal.png'),
+          ],
+        ),
+      ),
     );
   }
 }
