@@ -11,10 +11,10 @@ Club mancity = Club(name: 'Manchester City', imgUrl: 'images/mancity.png');
 Club watford = Club(name: 'Watford', imgUrl: 'images/watford.png');
 
 var matchList = [
-  Pertandingan(home: mu, homeScore: 1, away: westham, awayScore: 0, date: DateTime.parse('22 jan 2022')),
-  Pertandingan(home: mu, homeScore: 0, away: watford, awayScore: 0, date: DateTime.parse('26 feb 2022')),
-  Pertandingan(home: mancity, homeScore: 4, away: mu, awayScore: 1, date: DateTime.parse('6 mar 2022')),
-  Pertandingan(home: arsenal, homeScore: 3, away: mu, awayScore: 1, date: DateTime.parse('23 apr 2022')),
+  Pertandingan(home: mu, homeScore: 1, away: westham, awayScore: 0, date: DateTime.parse('2022-01-22')),
+  Pertandingan(home: mu, homeScore: 0, away: watford, awayScore: 0, date: DateTime.parse('2022-02-26')),
+  Pertandingan(home: mancity, homeScore: 4, away: mu, awayScore: 1, date: DateTime.parse('2022-03-06')),
+  Pertandingan(home: arsenal, homeScore: 3, away: mu, awayScore: 1, date: DateTime.parse('2022-04-23')),
   Pertandingan(home: mu, homeScore: 4, away: liverpool, awayScore: 0, date: DateTime.parse('2022-07-12')),
 ];
 
