@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:match_soccer/detail_page.dart';
 import 'package:match_soccer/model/club.dart';
 import 'package:match_soccer/model/pertandingan.dart';
 import 'list_page.dart';
