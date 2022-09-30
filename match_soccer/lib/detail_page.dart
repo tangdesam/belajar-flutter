@@ -27,7 +27,8 @@ class DetailPage extends StatelessWidget {
                 Text(currMatch.away.name),
               ],
             ),
-            Image.asset(currMatch.imgLineup)
+            Image.asset(currMatch.imgLineup),
+            Image.asset(currMatch.imgSubtitutes)
           ],
         ),
       ),

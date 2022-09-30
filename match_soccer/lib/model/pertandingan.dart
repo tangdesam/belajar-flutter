@@ -7,6 +7,7 @@ class Pertandingan {
   int awayScore;
   DateTime date;
   String imgLineup = 'images/lineups.png';
+  String imgSubtitutes = 'images/subtitutes.png';
 
   Pertandingan(
       {required this.home,
