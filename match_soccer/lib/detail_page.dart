@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:match_soccer/main.dart';
 import 'package:match_soccer/model/pertandingan.dart';
 
@@ -32,8 +33,7 @@ class DetailPage extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: Text(DateFormat.d().format(currMatch.date) + " " + DateFormat.MMM().format(currMatch.date) + " " + DateFormat.y().format(currMatch.date)),
     );
   }
-
-
 }
