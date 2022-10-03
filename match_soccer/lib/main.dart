@@ -47,7 +47,9 @@ class MyApp extends StatelessWidget {
       initialRoute: ListPage.routeName,
       routes: {
         ListPage.routeName: (context) => ListPage(),
-
+        DetailPage.routeName: (context) => DetailPage(
+          currMatch: ModalRoute.of(context)?.settings.arguments as Pertandingan,
+        ),
       },
     );
 

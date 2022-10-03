@@ -22,15 +22,20 @@ class ListPage extends StatelessWidget {
       body: ListView.builder(
         itemBuilder: (context, index) {
           Pertandingan currMatch = matchList[index];
-          // return Text(currMatch.home.name + ' Vs ' + currMatch.away.name);
+
           return InkWell(
+            // cara 2, dengan route
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return DetailPage(
-                  currMatch: currMatch,
-                );
-              }));
+              Navigator.pushNamed(context, DetailPage.routeName, arguments: currMatch);
             },
+            // cara 1
+            // onTap: () {
+            //   Navigator.push(context, MaterialPageRoute(builder: (context) {
+            //     return DetailPage(
+            //       currMatch: currMatch,
+            //     );
+            //   }));
+            // },
             child: Card(
               child: Padding(
                 padding: EdgeInsets.all(8.0),
