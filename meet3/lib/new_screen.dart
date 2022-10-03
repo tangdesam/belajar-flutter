@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meet3/model/article.dart';
+import 'package:meet3/news_detail.dart';
 
 class NewsScreen extends StatelessWidget {
   static const routeName = '/article_list';
@@ -36,5 +37,8 @@ Widget _buildArticleItem(BuildContext context, Article articl) {
     leading: Image.network(articl.urlToImage, width: 100,),
     title: Text(articl.title),
     subtitle: Text(articl.author),
+    onTap: () {
+      Navigator.pushNamed(context, DetailNewsScreen.routeName, arguments: articl);
+    },
   );
 }
