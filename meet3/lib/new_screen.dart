@@ -31,14 +31,14 @@ class NewsScreen extends StatelessWidget {
 }
 
 
-Widget _buildArticleItem(BuildContext context, Article articl) {
+Widget _buildArticleItem(BuildContext context, Article article) {
   return ListTile(
     contentPadding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-    leading: Image.network(articl.urlToImage, width: 100,),
-    title: Text(articl.title),
-    subtitle: Text(articl.author),
+    leading: Image.network(article.urlToImage, width: 100,),
+    title: Text(article.title),
+    subtitle: Text(article.author),
     onTap: () {
-      Navigator.pushNamed(context, DetailNewsScreen.routeName, arguments: articl);
+      Navigator.pushNamed(context, DetailNewsScreen.routeName, arguments: article);
     },
   );
 }
