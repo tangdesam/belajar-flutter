@@ -11,7 +11,8 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea( // supaya tidak terlalu atas (tempatnya jam, sinyal, dll)
+      body: SafeArea(
+        // supaya tidak terlalu atas (tempatnya jam, sinyal, dll)
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -35,7 +36,8 @@ class DetailPage extends StatelessWidget {
                                 Navigator.pop(context);
                               },
                             ),
-                          )
+                          ),
+                          const FavouriteButton(),
                         ],
                       ),
                     ),
@@ -49,33 +51,38 @@ class DetailPage extends StatelessWidget {
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'DancingScript',
-                    )
-                ),
+                    )),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(
-                    vertical: 16, horizontal: 48),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 16, horizontal: 48),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Column(
                       children: <Widget>[
                         Icon(Icons.calendar_today),
-                        SizedBox(height: 8,),
+                        SizedBox(
+                          height: 8,
+                        ),
                         Text(gameInfo.releaseDate)
                       ],
                     ),
                     Column(
                       children: <Widget>[
                         Icon(Icons.account_balance),
-                        SizedBox(height: 8,),
+                        SizedBox(
+                          height: 8,
+                        ),
                         Text(gameInfo.publisher)
                       ],
                     ),
                     Column(
                       children: <Widget>[
                         Icon(Icons.favorite),
-                        SizedBox(height: 8,),
+                        SizedBox(
+                          height: 8,
+                        ),
                         Text('2k')
                       ],
                     ),
@@ -92,10 +99,10 @@ class DetailPage extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ),
-              SizedBox( // pembungkus untuk fix height
+              SizedBox(
+                // pembungkus untuk fix height
                 height: 150,
-                child:
-                ListView(
+                child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: gameInfo.imageUrls.map((url) {
                     return Padding(
@@ -135,6 +142,33 @@ class DetailPage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class FavouriteButton extends StatefulWidget {
+  const FavouriteButton({Key? key}) : super(key: key);
+
+  @override
+  _FavouriteButtonState createState() {
+    return _FavouriteButtonState();
+  }
+}
+
+class _FavouriteButtonState extends State<FavouriteButton> {
+  bool isFave = false;
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return IconButton(
+      icon: Icon(isFave ? Icons.favorite : Icons.favorite_border),
+      color: Colors.red,
+      onPressed: () {
+        setState(() {
+          isFave = !isFave;
+        });
+      },
     );
   }
 }
