@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meet3/home_screen.dart';
+import 'package:meet3/new_screen.dart';
 
 import 'detail_page.dart';
 
@@ -26,9 +27,16 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: Colors.blue,
+        // supaya resolusi sesuai dengan dpi device
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      // initialRoute: news,
       // home: const DetailPage(),
-      home: HomeScreen(),
+      // home: HomeScreen(),
+      initialRoute: NewsScreen.routeName,
+      routes: {
+        NewsScreen.routeName: (context)=>const NewsScreen(),
+      },
     );
   }
 }
