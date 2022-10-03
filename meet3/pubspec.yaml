@@ -62,6 +62,7 @@ flutter:
    - images/starcraft.jpg
    - images/cs.jpg
    - images/generals.jpg
+   - assets/articles.json
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
