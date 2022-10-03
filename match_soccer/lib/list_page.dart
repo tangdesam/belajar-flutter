@@ -66,7 +66,8 @@ class ListPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Icon(Icons.favorite_border, color: Colors.red),
+                    // Icon(Icons.favorite_border, color: Colors.red),
+                    const TombolLove(),
                   ],
                 ),
               ),
@@ -75,6 +76,30 @@ class ListPage extends StatelessWidget {
         },
         itemCount: matchList.length,
       ),
+    );
+  }
+}
+
+class TombolLove extends StatefulWidget {
+  const TombolLove({Key? key}) : super(key: key);
+
+  @override
+  State<TombolLove> createState() => _TombolLoveState();
+}
+
+class _TombolLoveState extends State<TombolLove> {
+  bool isLoved = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: Icon(this.isLoved ? Icons.favorite : Icons.favorite_outline),
+      color: Colors.red,
+      onPressed: () {
+        setState(() {
+          this.isLoved = !this.isLoved;
+        });
+      },
     );
   }
 }
