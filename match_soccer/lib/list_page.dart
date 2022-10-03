@@ -4,6 +4,7 @@ import 'package:match_soccer/main.dart';
 import 'package:match_soccer/model/pertandingan.dart';
 
 class ListPage extends StatelessWidget {
+  static const routeName = '/list_page';
   ListPage({Key? key}) : super(key: key);
 
   @override

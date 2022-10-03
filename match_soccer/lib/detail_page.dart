@@ -4,6 +4,7 @@ import 'package:match_soccer/main.dart';
 import 'package:match_soccer/model/pertandingan.dart';
 
 class DetailPage extends StatelessWidget {
+  static const routeName = '/detail_page';
   Pertandingan currMatch;
   DetailPage({Key? key, required Pertandingan this.currMatch}) : super(key: key);
 

@@ -43,7 +43,13 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.red,
       ),
-      home: ListPage(),
+      // home: ListPage(),
+      initialRoute: ListPage.routeName,
+      routes: {
+        ListPage.routeName: (context) => ListPage(),
+
+      },
     );
+
   }
 }
