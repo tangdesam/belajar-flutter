@@ -87,3 +87,4 @@ lint/tmp/
 #ga jalan
 **.dart_tool/
 **.idea/
+**.flutter**

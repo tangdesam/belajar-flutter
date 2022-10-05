@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meet3/home_screen.dart';
 import 'package:meet3/model/article.dart';
+import 'package:meet3/more_news.dart';
 import 'package:meet3/new_screen.dart';
 import 'package:meet3/news_detail.dart';
 
@@ -40,6 +41,9 @@ class MyApp extends StatelessWidget {
         NewsScreen.routeName: (context)=>const NewsScreen(),
         DetailNewsScreen.routeName: (context) => DetailNewsScreen(
           article: ModalRoute.of(context)?.settings.arguments as Article
+        ),
+        MoreNewsScreen.routeName: (context) => MoreNewsScreen(
+          url: ModalRoute.of(context)?.settings.arguments as String
         ),
       },
     );

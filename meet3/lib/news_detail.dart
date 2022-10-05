@@ -1,7 +1,6 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:meet3/model/article.dart';
+import 'package:meet3/more_news.dart';
 
 class DetailNewsScreen extends StatelessWidget {
   static const routeName='/article_detail';
@@ -36,7 +35,12 @@ class DetailNewsScreen extends StatelessWidget {
                   Divider(color: Colors.grey,),
                   Text(article.content),
                   const SizedBox(height: 10,),
-                  ElevatedButton(onPressed: () {}, child: const Text('More...')),
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, MoreNewsScreen.routeName, arguments: article.url);
+                      },
+                      child: const Text('More...')
+                  ),
                 ],
               ),
             ),
