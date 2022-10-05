@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meet3/custom_scaffold.dart';
+import 'package:meet3/widgets/custom_scaffold.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class MoreNewsScreen extends StatelessWidget {
