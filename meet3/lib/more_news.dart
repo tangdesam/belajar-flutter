@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meet3/custom_scaffold.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class MoreNewsScreen extends StatelessWidget {
@@ -8,14 +9,19 @@ class MoreNewsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('More detail news'),
-      ),
+    return CustomScaffold(
       body: WebView(
         initialUrl: this.url,
       ),
     );
+    // return Scaffold(
+    //   appBar: AppBar(
+    //     title: Text('More detail news'),
+    //   ),
+    //   body: WebView(
+    //     initialUrl: this.url,
+    //   ),
+    // );
   }
 }
  
