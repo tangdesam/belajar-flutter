@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meet3/home_screen.dart';
 import 'package:meet3/model/article.dart';
 import 'package:meet3/more_news.dart';
-import 'package:meet3/new_screen.dart';
+import 'package:meet3/news_screen.dart';
 import 'package:meet3/news_detail.dart';
 
 import 'detail_page.dart';
