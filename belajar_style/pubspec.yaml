@@ -27,6 +27,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  google_fonts: ^3.0.1
   flutter:
     sdk: flutter
 
@@ -73,10 +74,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: WorkSans
-      fonts:
-        - asset: fonts/WorkSans-Regular.ttf
+#  fonts:
+#    - family: WorkSans
+#      fonts:
+#        - asset: fonts/WorkSans-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
