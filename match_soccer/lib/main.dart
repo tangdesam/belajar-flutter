@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:match_soccer/detail_page.dart';
 import 'package:match_soccer/model/club.dart';
 import 'package:match_soccer/model/pertandingan.dart';
+import 'package:match_soccer/styles.dart';
 import 'list_page.dart';
 
 Club mu = Club(name: 'Manchester United', imgUrl: 'images/manutd.png');
@@ -32,6 +33,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Match Soccer',
       theme: ThemeData(
+        colorScheme: Theme.of(context).colorScheme.copyWith(
+          primary: primary700,
+          onPrimary: Colors.white,
+          secondary: secondary500,
+          error: Colors.red,
+        ),
+        textTheme: replyTextTheme,
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -41,7 +49,7 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.red,
+        // primarySwatch: Colors.red,
       ),
       // home: ListPage(),
       initialRoute: ListPage.routeName,
