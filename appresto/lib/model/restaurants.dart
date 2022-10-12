@@ -8,7 +8,7 @@ class Restaurants {
   String description;
   String pictureId;
   String city;
-  double rating;
+  num rating;
   Menus menus;
 
   Restaurants(
