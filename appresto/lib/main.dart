@@ -93,7 +93,6 @@ class _RestaurantListState extends State<RestaurantList> {
       future: DefaultAssetBundle.of(context).loadString('assets/local_restaurant.json'),
       builder: (context, snapshot) {
         final List<Restaurants> restaurants = parseRestaurants(snapshot.data);
-        print("====== _doneRestaurants.length: " + _doneRestaurants.length.toString());
         return ListView.builder(
           itemCount: restaurants.length,
           itemBuilder: (context, index) {

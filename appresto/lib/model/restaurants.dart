@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+
 import 'menus.dart';
 
 class Restaurants {
@@ -43,5 +45,13 @@ class Restaurants {
     }
     return data;
   }
+
+  @override
+  bool operator == (Object other) {
+    return other is Restaurants
+        && this.id == other.id;
+  }
+
+
 }
 
