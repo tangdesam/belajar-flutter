@@ -71,7 +71,23 @@ Widget _buildRestaurantItem(BuildContext context, Restaurants resto) {
       contentPadding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       leading: Image.network(resto.pictureId, width: 100,),
       title: Text(resto.name),
-      subtitle: Text(resto.description),
+      // subtitle: Text(resto.description),
+      subtitle: Column(
+       children: [
+         Row(
+           children: [
+             Icon(Icons.add_location),
+             Text(resto.city),
+           ],
+         ),
+         Row(
+           children: [
+             Icon(Icons.star),
+             Text(resto.rating.toString()),
+           ],
+         ),
+       ],
+      ),
       onTap: () {
         Navigator.pushNamed(context, DetailRestaurantPage.routeName, arguments: resto);
       },
