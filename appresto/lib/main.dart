@@ -91,6 +91,10 @@ Widget _buildRestaurantItem(BuildContext context, Restaurants resto) {
       onTap: () {
         Navigator.pushNamed(context, DetailRestaurantPage.routeName, arguments: resto);
       },
+      trailing: ElevatedButton(
+        onPressed: () {  },
+        child: Text('visited'),
+      ),
     ),
   );
 }
