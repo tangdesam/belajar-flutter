@@ -199,12 +199,6 @@ Widget _buildRestaurantItem(BuildContext context, Restaurants resto) {
           ),
         ],
       ),
-      trailing: ElevatedButton(
-        child: Text("Done"),
-        onPressed: (){
-
-        },
-      ),
       onTap: () {
         Navigator.pushNamed(context, DetailRestaurantPage.routeName,arguments: resto);
       },
