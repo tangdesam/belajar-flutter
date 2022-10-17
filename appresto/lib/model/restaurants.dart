@@ -1,10 +1,11 @@
 import 'dart:convert';
 
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 import 'menus.dart';
 
-class Restaurants {
+class Restaurants extends Equatable {
   String id;
   String name;
   String description;
@@ -46,11 +47,16 @@ class Restaurants {
     return data;
   }
 
+  // cara 1, tanpa tambahan library
+  // @override
+  // bool operator == (Object other) {
+  //   return other is Restaurants
+  //       && this.id == other.id;
+  // }
+
+  // cara 2, pakai 'package:equatable/equatable.dart'
   @override
-  bool operator == (Object other) {
-    return other is Restaurants
-        && this.id == other.id;
-  }
+  List<Object?> get props => [id];
 
 
 }
