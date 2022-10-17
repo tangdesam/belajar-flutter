@@ -30,9 +30,12 @@ class MyApp extends StatelessWidget {
       // home: ResturantListPage(),
       initialRoute: ResturantListPage.routeName,
       routes: {
-        ResturantListPage.routeName: (context) => ResturantListPage(doneRestaurantsList: [],),
+        ResturantListPage.routeName: (context) => ResturantListPage(),
         DetailRestaurantPage.routeName: (context) => DetailRestaurantPage(
           resto: ModalRoute.of(context)?.settings.arguments as Restaurants
+        ),
+        DoneRestaurantListPage.routeName: (context) => DoneRestaurantListPage(
+          doneRestaurantList: ModalRoute.of(context)?.settings.arguments as List<Restaurants>
         ),
       },
     );
@@ -41,15 +44,15 @@ class MyApp extends StatelessWidget {
 
 class ResturantListPage extends StatefulWidget {
   static const routeName = '/restaurant_list';
-  final List<Restaurants> doneRestaurantsList;
 
-  const ResturantListPage({Key? key, required this.doneRestaurantsList}) : super(key: key);
+  const ResturantListPage({Key? key}) : super(key: key);
 
   @override
   State<ResturantListPage> createState() => _ResturantListPageState();
 }
 
 class _ResturantListPageState extends State<ResturantListPage> {
+  final List<Restaurants> doneRestaurantsList = [];
 
 
   @override
@@ -60,13 +63,13 @@ class _ResturantListPageState extends State<ResturantListPage> {
         actions: <Widget>[
           IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, ResturantListPage.routeName);
+                Navigator.pushNamed(context, DoneRestaurantListPage.routeName, arguments: doneRestaurantsList);
               },
               icon: Icon(Icons.done)
           ),
         ],
       ),
-      body: RestaurantList(doneRestaurantsList: widget.doneRestaurantsList,),
+      body: RestaurantList(doneRestaurantsList: doneRestaurantsList,),
     );
   }
 
@@ -80,12 +83,12 @@ class RestaurantList extends StatefulWidget {
   const RestaurantList({Key? key, required this.doneRestaurantsList}) : super(key: key);
 
   @override
-  State<RestaurantList> createState() => _RestaurantListState(doneRestaurantsList);
+  State<RestaurantList> createState() => _RestaurantListState();
 }
 
 class _RestaurantListState extends State<RestaurantList> {
   // final List<Restaurants> _doneRestaurants = const [];
-  List<Restaurants> _doneRestaurants ;
+  // List<Restaurants> _doneRestaurants ;
 
   @override
   Widget build(BuildContext context) {
@@ -99,10 +102,10 @@ class _RestaurantListState extends State<RestaurantList> {
             // return _buildRestaurantItem(context, restaurants[index]);
 
             return RestaurantItem(resto: restaurants[index],
-              isDone: _doneRestaurants.contains(restaurants[index]),
+              isDone: widget.doneRestaurantsList.contains(restaurants[index]),
               onClick: () {
                 setState(() {
-                  _doneRestaurants.add(restaurants[index]);
+                  widget.doneRestaurantsList.add(restaurants[index]);
                 });
               },
             );
@@ -112,7 +115,7 @@ class _RestaurantListState extends State<RestaurantList> {
     );
   }
 
-  _RestaurantListState(this._doneRestaurants);
+
 }
 
 
@@ -163,21 +166,6 @@ class RestaurantItem extends StatelessWidget {
 }
 
 
-class DoneRestaurantListPage extends StatelessWidget {
-  static final routeName = '/visited_restaurant';
-  final List<Restaurants> doneRestaurantsList;
-
-  const DoneRestaurantListPage({Key? key, required this.doneRestaurantsList}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
-
-
-
-
 List<Restaurants> parseRestaurants(String? data) {
   if (data == null){
     return[];
@@ -185,3 +173,66 @@ List<Restaurants> parseRestaurants(String? data) {
   final List parsed = jsonDecode(data)["restaurants"]; // jsonDecode dari dart:convert
   return parsed.map((json) => Restaurants.fromJson(json)).toList();
 }
+
+Widget _buildRestaurantItem(BuildContext context, Restaurants resto) {
+  return Material (
+    child: ListTile(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      leading: Image.network(
+        resto.pictureId,
+        width: 100,
+      ),
+      title: Text(resto.name),
+      subtitle: Column(
+        children: [
+          Row(
+            children: [
+              Icon(Icons.add_location),
+              Text(resto.city),
+            ],
+          ),
+          Row(
+            children: [
+              Icon(Icons.star),
+              Text(resto.rating.toString()),
+            ],
+          ),
+        ],
+      ),
+      trailing: ElevatedButton(
+        child: Text("Done"),
+        onPressed: (){
+
+        },
+      ),
+      onTap: () {
+        Navigator.pushNamed(context, DetailRestaurantPage.routeName,arguments: resto);
+      },
+    ),
+  );
+}
+
+class DoneRestaurantListPage extends StatelessWidget {
+  static final routeName = '/visited_restaurant';
+  final List<Restaurants> doneRestaurantList;
+  const DoneRestaurantListPage({Key? key, required this.doneRestaurantList}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Visisted Restaurant'),
+      ),
+      body: ListView.builder(
+        itemCount: doneRestaurantList.length,
+        itemBuilder: (context, index) {
+          return _buildRestaurantItem(context, doneRestaurantList[index]);
+        },
+      ),
+    );
+  }
+}
+
+
+
+
