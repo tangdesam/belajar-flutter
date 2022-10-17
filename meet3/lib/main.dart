@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:meet3/home_screen.dart';
-import 'package:meet3/model/article.dart';
-import 'package:meet3/more_news.dart';
-import 'package:meet3/news_screen.dart';
-import 'package:meet3/news_detail.dart';
+import 'package:meet3/data/model/article.dart';
+import 'package:meet3/ui/more_news.dart';
+import 'package:meet3/ui/news_screen.dart';
+import 'package:meet3/widgets/news_detail.dart';
 
-import 'detail_page.dart';
+import 'ui/detail_page.dart';
 
 void main() {
   runApp(const MyApp());

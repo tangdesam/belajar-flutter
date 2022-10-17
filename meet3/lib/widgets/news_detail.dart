@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:meet3/model/article.dart';
-import 'package:meet3/more_news.dart';
+import 'package:meet3/data/model/article.dart';
+import 'package:meet3/ui/more_news.dart';
+
 
 class DetailNewsScreen extends StatelessWidget {
   static const routeName='/article_detail';

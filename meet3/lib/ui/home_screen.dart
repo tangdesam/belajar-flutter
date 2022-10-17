@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meet3/detail_page.dart';
-import 'package:meet3/model/game_info.dart';
+import 'package:meet3/ui/detail_page.dart';
+import 'package:meet3/data/model/game_info.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);

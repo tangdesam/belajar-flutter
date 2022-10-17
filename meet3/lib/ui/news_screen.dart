@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:meet3/model/article.dart';
-import 'package:meet3/news_detail.dart';
+import 'package:meet3/data/model/article.dart';
+import 'package:meet3/widgets/news_detail.dart';
 import 'package:meet3/widgets/platform_widget.dart';
 
 class NewsScreen extends StatelessWidget {
