@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:stomp_dart_client/stomp.dart';
 import 'package:stomp_dart_client/stomp_config.dart';
@@ -34,26 +36,7 @@ class MyApp extends StatelessWidget {
             ElevatedButton(
               child: const Text('Connect'),
               onPressed: () {
-
-                final stompClient = StompClient(
-                  config: StompConfig(
-                    url: 'ws://192.168.0.8:8080/chat',
-                    onConnect: (StompFrame frame) {
-                      print('onconnect...');
-
-                    },
-                    beforeConnect: () async {
-                      print('waiting to connect...');
-                      await Future.delayed(Duration(milliseconds: 200));
-                      print('connecting...');
-                    },
-                    onWebSocketError: (dynamic error) => print(error.toString()),
-                    stompConnectHeaders: {'Authorization': 'Bearer yourToken'},
-                    webSocketConnectHeaders: {'Authorization': 'Bearer yourToken'},
-                  ),
-                );
                 stompClient.activate();
-                print('====== ini kapan? ');
               },
             ),
           ],
@@ -63,3 +46,37 @@ class MyApp extends StatelessWidget {
   }
 }
 
+final stompClient = StompClient(
+  config: StompConfig(
+    url: 'ws://192.168.0.8:8080/chat',
+    onConnect: (StompFrame frame) {
+      print('onconnect...');
+      onStompConnect(frame);
+    },
+    beforeConnect: () async {
+      print('waiting to connect...');
+      await Future.delayed(Duration(milliseconds: 200));
+      print('connecting...');
+    },
+    onWebSocketError: (dynamic error) => print(error.toString()),
+    stompConnectHeaders: {'Authorization': 'Bearer yourToken'},
+    webSocketConnectHeaders: {'Authorization': 'Bearer yourToken'},
+  ),
+);
+
+void onStompConnect(StompFrame frame) {
+  stompClient.subscribe(
+    destination: '/topic/messages',
+    callback: (frame) {
+      dynamic result = json.decode(frame.body!);
+      print('(' + result['time'] + ') ' + result['from'] + ': ' + result['text']);
+    },
+  );
+
+  // Timer.periodic(Duration(seconds: 10), (_) {
+  //   stompClient.send(
+  //     destination: '/app/test/endpoints',
+  //     body: json.encode({'a': 123}),
+  //   );
+  // });
+}
