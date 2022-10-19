@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:news_api/data/model/source.dart';
 
 class Article {
@@ -42,4 +44,12 @@ class Article {
     "publishedAt": publishedAt.toIso8601String(),
     "content": content == null ? null : content,
   };
+}
+
+List<Article> parseArticles(String? json) {
+  if (json==null){
+    return[];
+  }
+  final List parsed = jsonDecode(json);
+  return parsed.map((json) => Article.fromJson(json)).toList();
 }

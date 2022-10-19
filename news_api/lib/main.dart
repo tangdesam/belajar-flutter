@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:news_api/data/model/article.dart';
+import 'package:news_api/ui/more_news.dart';
+import 'package:news_api/widgets/news_detail.dart';
+import 'package:news_api/widgets/news_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,11 +28,22 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('News API'),
+      // home: Scaffold(
+      //   appBar: AppBar(
+      //     title: const Text('News API'),
+      //   ),
+      // ),
+      initialRoute: NewsScreen.routeName,
+      routes: {
+        NewsScreen.routeName: (context)=>const NewsScreen(),
+        DetailNewsScreen.routeName: (context) => DetailNewsScreen(
+            article: ModalRoute.of(context)?.settings.arguments as Article
         ),
-      ),
+        MoreNewsScreen.routeName: (context) => MoreNewsScreen(
+            url: ModalRoute.of(context)?.settings.arguments as String
+        ),
+
+      },
     );
   }
 }
