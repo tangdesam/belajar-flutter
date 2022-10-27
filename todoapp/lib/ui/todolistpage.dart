@@ -23,15 +23,21 @@ class ToDoListPage extends StatelessWidget {
               return Dismissible(
                 key: Key(todo.id.toString()),
                 background: Container(color: Colors.red,),
-                onDismissed: (direction) {
 
+                onDismissed: (direction) {
+                  provider.deleteTodo(todo.id!);
                 },
                 child: Card(
                   child: ListTile(
                     title: Text(todo.title),
                     subtitle: Text(todo.detail),
                     onTap: () async {
-
+                      final navigator = Navigator.of(context);
+                      // TODO kenapa kok pake tanda seru todo.id!
+                      final selectedTodo = await provider.getTodoById(todo.id!);
+                      navigator.push(MaterialPageRoute(builder: (context) {
+                        return ToDoAddUpdatePage(todo: selectedTodo,);
+                      }));
                     },
                   ),
                 ),

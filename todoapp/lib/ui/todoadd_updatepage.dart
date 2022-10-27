@@ -42,6 +42,14 @@ class _ToDoAddUpdatePageState extends State<ToDoAddUpdatePage> {
                     final todo = Todo(title: _titleController.text, detail: _detailController.text);
                     Provider.of<DbProvider>(context, listen: false).addTodo(todo);
                   }
+                  else {
+                    final todo = Todo(
+                      id: widget.todo!.id,
+                      title: _titleController.text,
+                      detail: _detailController.text,
+                    );
+                    Provider.of<DbProvider>(context, listen: false).updateTodo(todo);
+                  }
                   Navigator.pop(context);
                 },
               ),

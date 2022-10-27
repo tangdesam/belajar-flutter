@@ -21,4 +21,21 @@ class DbProvider extends ChangeNotifier{
     await _dbHelper.insertTodo(todo);
     _getAllTodos();
   }
+
+  Future<Todo> getTodoById(int id) async {
+    return await _dbHelper.getTodoById(id);
+  }
+
+  Future<void> updateTodo(Todo todo) async {
+    // TODO cari tau beda nya pake Future dan tanpa Future
+    // bisa tanpa Future
+    await _dbHelper.updateTodo(todo);
+    _getAllTodos();
+  }
+
+  Future<void> deleteTodo(int id) async {
+    await _dbHelper.deleteTodo(id);
+    _getAllTodos();
+  }
+
 }
