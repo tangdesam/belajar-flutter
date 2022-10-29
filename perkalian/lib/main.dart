@@ -50,10 +50,18 @@ class _PerkalianState extends State<Perkalian> {
   final txtJawabanController = TextEditingController();
   // IconHasil iconHasil = IconHasil();
 
+  late FocusNode focusNodeJawaban;
 
 
   @override
+  void initState() {
+    super.initState();
+    focusNodeJawaban = FocusNode();
+  }
+
+  @override
   void dispose() {
+    focusNodeJawaban.dispose();
     txtJawabanController.dispose();
     super.dispose();
   }
@@ -81,12 +89,14 @@ class _PerkalianState extends State<Perkalian> {
                 decoration: InputDecoration(labelText: 'Jawaban'),
                 keyboardType: TextInputType.number,
                 controller: txtJawabanController,
+                focusNode: focusNodeJawaban,
               ),
             ),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                   onPressed: () {
+                    focusNodeJawaban.unfocus();
                     setState(() {
                       int c = widget.a * widget.b;
                       int jawaban = int.parse(txtJawabanController.text);
@@ -100,7 +110,9 @@ class _PerkalianState extends State<Perkalian> {
                       txtJawabanController.text = '';
                       widget.a = random10();
                       widget.b = random10();
+
                     });
+                    // focusNodeJawaban.requestFocus();
                   },
                   child: Text('Jawab')),
             ),
