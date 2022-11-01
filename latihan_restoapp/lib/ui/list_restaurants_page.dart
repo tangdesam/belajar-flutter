@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:latihan_restoapp/data/api/api_service.dart';
 import 'package:latihan_restoapp/data/model/restaurant.dart';
 import 'package:latihan_restoapp/provider/list_restaurants_provider.dart';
+import 'package:latihan_restoapp/ui/detail_restaurant_stful.dart';
 import 'package:provider/provider.dart';
 
 class ListRestaurantsPage extends StatelessWidget {
@@ -13,6 +14,14 @@ class ListRestaurantsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('List Restaurants'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              // TODO list yang visited saja dari database
+            },
+            icon: Icon(Icons.done),
+          ),
+        ],
       ),
       body: _buildList(),
     );
@@ -55,15 +64,20 @@ Widget _buildRestaurantItem(BuildContext context, Restaurant restaurant) {
     child: ListTile(
       contentPadding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       leading: Image.network(
-        restaurant.prefixImageUrl('small') + '/' + restaurant.pictureId,
+        Restaurant.prefixImageUrl('small') + '/' + restaurant.pictureId,
         width: 100,
       ),
       title: Text(restaurant.name),
       subtitle: Text(restaurant.city),
       onTap: () {
-        // Navigator.pushNamed(context, DetailNewsScreen.routeName,
-        //     arguments: article);
+        Navigator.pushNamed(context, DetailRestaurantStful.routeName, arguments: restaurant.id);
       },
+      trailing: ElevatedButton(
+        onPressed: () {
+          // TODO klik tombol visited
+        },
+        child: Text('Visited'),
+      ),
     ),
   );
 }

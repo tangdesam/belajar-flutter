@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:latihan_restoapp/data/model/detail_restaurant.dart';
+import 'package:latihan_restoapp/ui/detail_restaurant_stful.dart';
 import 'package:latihan_restoapp/ui/home_restaurants_page.dart';
 import 'package:latihan_restoapp/ui/list_restaurants_page.dart';
 
@@ -33,9 +35,11 @@ class MyApp extends StatelessWidget {
         HomeRestaurantsPage.routeName: (context) {
           return HomeRestaurantsPage();
         },
-        ListRestaurantsPage.routeName: (context) {
-          return ListRestaurantsPage();
-        },
+        DetailRestaurantStful.routeName: (context) {
+          return DetailRestaurantStful(
+            restaurantId: ModalRoute.of(context)?.settings.arguments as String
+          );
+        }
       },
     );
   }
