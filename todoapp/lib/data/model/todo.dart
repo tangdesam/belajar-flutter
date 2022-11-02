@@ -7,16 +7,16 @@ class Todo {
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
-      'title': title,
-      'detail': detail
+      "id": id,
+      "title": title,
+      "detail": detail
     };
   }
 
   Todo.fromMap(Map<String, dynamic> map) {
-    id = map['id'];
-    title = map['title'];
-    detail = map['detail'];
+    id = map["id"];
+    title = map["title"];
+    detail = map["detail"];
   }
 
 }
