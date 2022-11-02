@@ -26,6 +26,10 @@ class DbProvider extends ChangeNotifier{
     return await _dbHelper.getTodoById(id);
   }
 
+  Future<Todo> getOldestTodo() async {
+    return await _dbHelper.getOldestTodo();
+  }
+
   Future<void> updateTodo(Todo todo) async {
     // TODO cari tau beda nya pake Future dan tanpa Future
     // bisa tanpa Future
