@@ -1,7 +1,7 @@
 import 'dart:isolate';
 import 'dart:ui';
 
-import 'package:todoapp/notificationhelper.dart';
+import 'package:todoapp/utils/notificationhelper.dart';
 import 'package:todoapp/provider/dbprovider.dart';
 
 final ReceivePort port = ReceivePort();

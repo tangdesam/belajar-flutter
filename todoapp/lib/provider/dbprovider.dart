@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todoapp/data/model/todo.dart';
-import 'package:todoapp/databasehelper.dart';
+import 'package:todoapp/utils/databasehelper.dart';
 
 class DbProvider extends ChangeNotifier{
   List<Todo> _arrToDo = [];
