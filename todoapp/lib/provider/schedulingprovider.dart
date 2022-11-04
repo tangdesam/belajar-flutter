@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:todoapp/utils/backgroundservice.dart';
@@ -15,7 +17,7 @@ class SchedulingProvider extends ChangeNotifier {
       notifyListeners();
       return await AndroidAlarmManager.oneShot(
           const Duration(seconds: 5),
-          1,
+          Random().nextInt(pow(2,31) as int),
           BackgroundService.callbak,
           exact: true,
           wakeup: true

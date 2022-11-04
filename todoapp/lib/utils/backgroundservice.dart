@@ -24,6 +24,7 @@ class BackgroundService {
   }
 
   static Future<void> callbak() async {
+    print('=== Callback Alarm');
     print('=== Alarm aktif');
     final NotificationHelper notificationHelper = NotificationHelper();
     final db = DbProvider();
