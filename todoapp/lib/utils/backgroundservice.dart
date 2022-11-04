@@ -1,6 +1,7 @@
 import 'dart:isolate';
 import 'dart:ui';
 
+import 'package:todoapp/main.dart';
 import 'package:todoapp/utils/notificationhelper.dart';
 import 'package:todoapp/provider/dbprovider.dart';
 

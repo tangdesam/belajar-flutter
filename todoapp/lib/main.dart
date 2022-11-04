@@ -1,18 +1,45 @@
+import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:todoapp/common/navigation.dart';
+import 'package:todoapp/data/model/todo.dart';
 import 'package:todoapp/data/preferences/preferences_helper.dart';
 import 'package:todoapp/provider/dbprovider.dart';
 import 'package:todoapp/provider/preferencesprovider.dart';
+import 'package:todoapp/provider/schedulingprovider.dart';
 import 'package:todoapp/ui/settingpage.dart';
+import 'package:todoapp/ui/todoadd_updatepage.dart';
 import 'package:todoapp/ui/todolistpage.dart';
+import 'package:todoapp/utils/backgroundservice.dart';
+import 'package:todoapp/utils/notificationhelper.dart';
 
-void main() {
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
+
+// void main() {
+//   runApp(const MyApp());
+// }
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final NotificationHelper _notificationHelper = NotificationHelper();
+  final BackgroundService _backgroundService = BackgroundService();
+  _backgroundService.initializeIsolate();
+  await AndroidAlarmManager.initialize();
+  await _notificationHelper.initNotifications(flutterLocalNotificationsPlugin);
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final NotificationHelper _notificationHelper = NotificationHelper();
 
   // This widget is the root of your application.
   @override
@@ -25,9 +52,13 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<PreferencesProvider>(
           create: (context) => PreferencesProvider(preferencesHelper: PreferencesHelper(sharedPreferences: SharedPreferences.getInstance())),
         ),
+        ChangeNotifierProvider(
+          create: ((context) => SchedulingProvider()),
+        ),
       ],
       child: MaterialApp(
         title: 'To Do App',
+        navigatorKey: navigatorKey,
         theme: ThemeData(
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -45,7 +76,7 @@ class MyApp extends StatelessWidget {
                 BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
               ],
               currentIndex: 0,
-              onTap: (index) {
+              onTap: (index) async {
                 switch (index) {
                   case 0:
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
@@ -53,6 +84,9 @@ class MyApp extends StatelessWidget {
                     }));
                     break;
                   case 1:
+                    // tombol done
+                    final NotificationHelper notificationHelper = NotificationHelper();
+                    await notificationHelper.showNotification(flutterLocalNotificationsPlugin, Todo(id: 7, title: "Tugas no 7", detail: "Ini tugas belajar fullter"));
                     break;
                   case 2:
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
@@ -67,5 +101,17 @@ class MyApp extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _notificationHelper.configureSelectNotificationSubject(ToDoAddUpdatePage.routeName);
+  }
+
+  @override
+  void dispose() {
+    selectNotificationSubject.close();
+    super.dispose();
   }
 }

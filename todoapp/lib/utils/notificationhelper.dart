@@ -21,14 +21,16 @@ class NotificationHelper {
     // app_icon = android/app/src/main/res/drwable/app_icon.png ??
     var initializeSettings = const AndroidInitializationSettings('app_icon');
     await flutterLocalNotificationsPlugin.initialize(InitializationSettings(android: initializeSettings),
-        onDidReceiveNotificationResponse: (NotificationResponse details) async {
-          final payload = details.payload;
-          if (payload != null) {
-            print("=== notification payload: " + payload);
-          }
-          selectNotificationSubject.add(payload ?? 'empty payload (payload kosong)')
-        }
+        onDidReceiveNotificationResponse: onDidReceiveNotificationResponse
     );
+  }
+
+  static void onDidReceiveNotificationResponse(NotificationResponse details) async {
+    final payload = details.payload;
+    if (payload != null) {
+      print("=== notification payload: " + payload);
+    }
+    selectNotificationSubject.add(payload ?? 'empty payload (payload kosong)');
   }
 
   Future<void> showNotification(FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin, Todo todo) async {
