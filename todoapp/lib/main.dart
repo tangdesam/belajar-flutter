@@ -11,6 +11,7 @@ import 'package:todoapp/firebase_options.dart';
 import 'package:todoapp/provider/dbprovider.dart';
 import 'package:todoapp/provider/preferencesprovider.dart';
 import 'package:todoapp/provider/schedulingprovider.dart';
+import 'package:todoapp/ui/loginpage.dart';
 import 'package:todoapp/ui/registerpage.dart';
 import 'package:todoapp/ui/settingpage.dart';
 import 'package:todoapp/ui/todoadd_updatepage.dart';
@@ -73,7 +74,7 @@ class _MyAppState extends State<MyApp> {
         home: Scaffold(
           body: Center(
             // child: const ToDoListPage(),
-            child: const RegisterPage(),
+            child: LoginPage(),
           ),
           bottomNavigationBar: Builder(builder: (context) {
             return BottomNavigationBar(
