@@ -1,4 +1,5 @@
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
@@ -6,9 +7,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todoapp/common/navigation.dart';
 import 'package:todoapp/data/model/todo.dart';
 import 'package:todoapp/data/preferences/preferences_helper.dart';
+import 'package:todoapp/firebase_options.dart';
 import 'package:todoapp/provider/dbprovider.dart';
 import 'package:todoapp/provider/preferencesprovider.dart';
 import 'package:todoapp/provider/schedulingprovider.dart';
+import 'package:todoapp/ui/registerpage.dart';
 import 'package:todoapp/ui/settingpage.dart';
 import 'package:todoapp/ui/todoadd_updatepage.dart';
 import 'package:todoapp/ui/todolistpage.dart';
@@ -23,6 +26,9 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = new Flut
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   final NotificationHelper _notificationHelper = NotificationHelper();
   final BackgroundService _backgroundService = BackgroundService();
   _backgroundService.initializeIsolate();
@@ -66,7 +72,8 @@ class _MyAppState extends State<MyApp> {
         // home: const ToDoListPage(),
         home: Scaffold(
           body: Center(
-            child: const ToDoListPage(),
+            // child: const ToDoListPage(),
+            child: const RegisterPage(),
           ),
           bottomNavigationBar: Builder(builder: (context) {
             return BottomNavigationBar(

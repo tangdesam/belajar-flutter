@@ -29,6 +29,13 @@
             {
               "client_id": "689018364304-0fac8d0e5gvl726sd40ipn58p8gpo7u9.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "689018364304-qj1sboii9ajdmc7dqbttd4l1hn0j1d0g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.lab.todoapp"
+              }
             }
           ]
         }
