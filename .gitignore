@@ -88,3 +88,5 @@ lint/tmp/
 **.dart_tool/
 **.idea/
 **.flutter**
+
+todoapp/android/app/google-services.json
