@@ -11,6 +11,7 @@ import 'package:todoapp/firebase_options.dart';
 import 'package:todoapp/provider/dbprovider.dart';
 import 'package:todoapp/provider/preferencesprovider.dart';
 import 'package:todoapp/provider/schedulingprovider.dart';
+import 'package:todoapp/ui/donetodopage.dart';
 import 'package:todoapp/ui/loginpage.dart';
 import 'package:todoapp/ui/registerpage.dart';
 import 'package:todoapp/ui/settingpage.dart';
@@ -93,8 +94,15 @@ class _MyAppState extends State<MyApp> {
                     break;
                   case 1:
                     // tombol done
-                    final NotificationHelper notificationHelper = NotificationHelper();
-                    await notificationHelper.showNotification(flutterLocalNotificationsPlugin, Todo(id: 7, title: "Tugas no 7", detail: "Ini tugas belajar fullter"));
+
+                    // coba notif
+                    // final NotificationHelper notificationHelper = NotificationHelper();
+                    // await notificationHelper.showNotification(flutterLocalNotificationsPlugin, Todo(id: 7, title: "Tugas no 7", detail: "Ini tugas belajar fullter"));
+
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                      return DoneTodoPage();
+                    }));
+
                     break;
                   case 2:
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
