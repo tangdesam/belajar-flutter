@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:todoapp/common.dart';
 import 'package:todoapp/common/navigation.dart';
 import 'package:todoapp/data/model/todo.dart';
 import 'package:todoapp/data/preferences/preferences_helper.dart';
 import 'package:todoapp/firebase_options.dart';
 import 'package:todoapp/provider/dbprovider.dart';
+import 'package:todoapp/provider/localizationsprovider.dart';
 import 'package:todoapp/provider/preferencesprovider.dart';
 import 'package:todoapp/provider/schedulingprovider.dart';
 import 'package:todoapp/ui/donetodopage.dart';
@@ -63,58 +65,73 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(
           create: ((context) => SchedulingProvider()),
         ),
+        ChangeNotifierProvider(
+          create: (context) => LocalizationsProvider(),
+        ),
       ],
-      child: MaterialApp(
-        title: 'To Do App',
-        navigatorKey: navigatorKey,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        // home: const ToDoListPage(),
-        home: Scaffold(
-          body: Center(
-            // child: const ToDoListPage(),
-            child: LoginPage(),
-          ),
-          bottomNavigationBar: Builder(builder: (context) {
-            return BottomNavigationBar(
-              items: <BottomNavigationBarItem>[
-                BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-                BottomNavigationBarItem(icon: Icon(Icons.done), label: 'Done'),
-                BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
-              ],
-              currentIndex: 0,
-              onTap: (index) async {
-                switch (index) {
-                  case 0:
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                      return ToDoListPage();
-                    }));
-                    break;
-                  case 1:
-                    // tombol done
+      child: Builder(
+        builder: (context) {
+          final provider = Provider.of<LocalizationsProvider>(context);
 
-                    // coba notif
-                    // final NotificationHelper notificationHelper = NotificationHelper();
-                    // await notificationHelper.showNotification(flutterLocalNotificationsPlugin, Todo(id: 7, title: "Tugas no 7", detail: "Ini tugas belajar fullter"));
+          return MaterialApp(
+            locale: provider.locale,
 
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                      return DoneTodoPage();
-                    }));
+            // title: 'To Do App',
+            title: AppLocalizations.of(context)?.titleAppBar ?? 'titleAppBar NULL',
 
-                    break;
-                  case 2:
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                      print("====== new SettingPage() ");
-                      return SettingPage();
-                    }));
-                    break;
-                }
-              },
-            );
-          }),
-        ),
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            navigatorKey: navigatorKey,
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+              visualDensity: VisualDensity.adaptivePlatformDensity,
+            ),
+            // home: const ToDoListPage(),
+            home: Scaffold(
+              body: Center(
+                // child: const ToDoListPage(),
+                child: LoginPage(),
+              ),
+              bottomNavigationBar: Builder(builder: (context) {
+                return BottomNavigationBar(
+                  items: <BottomNavigationBarItem>[
+                    BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+                    BottomNavigationBarItem(icon: Icon(Icons.done), label: 'Done'),
+                    BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
+                  ],
+                  currentIndex: 0,
+                  onTap: (index) async {
+                    switch (index) {
+                      case 0:
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                          return ToDoListPage();
+                        }));
+                        break;
+                      case 1:
+                        // tombol done
+
+                        // coba notif
+                        // final NotificationHelper notificationHelper = NotificationHelper();
+                        // await notificationHelper.showNotification(flutterLocalNotificationsPlugin, Todo(id: 7, title: "Tugas no 7", detail: "Ini tugas belajar fullter"));
+
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                          return DoneTodoPage();
+                        }));
+
+                        break;
+                      case 2:
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                          print("====== new SettingPage() ");
+                          return SettingPage();
+                        }));
+                        break;
+                    }
+                  },
+                );
+              }),
+            ),
+          );
+        }
       ),
     );
   }

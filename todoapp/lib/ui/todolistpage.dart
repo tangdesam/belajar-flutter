@@ -1,10 +1,13 @@
 
+import 'package:app_settings/app_settings.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:todoapp/common.dart';
 import 'package:todoapp/common/navigation.dart';
 import 'package:todoapp/provider/dbprovider.dart';
 import 'package:todoapp/ui/todoadd_updatepage.dart';
+import 'package:todoapp/widgets/flag_icon_widget.dart';
 
 class ToDoListPage extends StatelessWidget {
   static const routeName = '/todo_list';
@@ -15,7 +18,17 @@ class ToDoListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Todo App'),
+        // title: const Text('Todo App'),
+        title: Text(AppLocalizations.of(context)?.titleAppBar ?? 'titleAppBar NULL'),
+        actions: [
+          const FlagIconWidget(),
+          IconButton(
+            onPressed: (){
+              AppSettings.openDeviceSettings();
+            },
+            icon: const Icon(Icons.settings)
+          )
+        ],
       ),
       body: Consumer<DbProvider>(
         builder: (context, provider, child) {
