@@ -1,16 +1,9 @@
 # appresto
 
-A new Flutter project.
+Belajar load API dan database
 
-## Getting Started
+## List restaurants
+![Screenshot1](./readme/img/appresto-01.png "Screenshot 1")
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Visited restaurants
+![Screenshot2](./readme/img/appresto-02.png "Screenshot ")
