@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:latihan_restoapp/data/model/detail_restaurant.dart';
+import 'package:latihan_restoapp/provider/database_provider.dart';
 import 'package:latihan_restoapp/ui/detail_restaurant_stful.dart';
 import 'package:latihan_restoapp/ui/home_restaurants_page.dart';
 import 'package:latihan_restoapp/ui/list_restaurants_page.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  // runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => DatabaseProvider()),
+      ],
+      child: MyApp(),
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {

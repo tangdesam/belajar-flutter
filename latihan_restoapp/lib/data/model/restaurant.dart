@@ -14,12 +14,12 @@ class Restaurant extends Equatable {
     return parentImageUrl + '/' + size ;
   }
 
-  String id;
-  String name;
-  String description;
-  String pictureId;
-  String city;
-  num rating;
+  late String id;
+  late String name;
+  late String description;
+  late String pictureId;
+  late String city;
+  late num rating;
   // Menus menus;
 
   Restaurant(
@@ -59,7 +59,7 @@ class Restaurant extends Equatable {
   // cara 1, tanpa tambahan library
   // @override
   // bool operator == (Object other) {
-  //   return other is Restaurants
+  //   return other is Restaurant
   //       && this.id == other.id;
   // }
 
@@ -67,6 +67,25 @@ class Restaurant extends Equatable {
   @override
   List<Object?> get props => [id];
 
+  Map<String, dynamic> toMapDatabase() {
+    return {
+      "id": id,
+      "name": name,
+      "pictureId": pictureId,
+      "city": city,
+      "rating": rating,
+      "description": description
+    };
+  }
+
+  Restaurant.fromMapDatabase(Map<String, dynamic> map) {
+    id = map["id"];
+    name = map["name"];
+    pictureId = map["pictureId"];
+    rating = map["rating"];
+    city = map["city"];
+    description = map["description"];
+  }
 
 }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:latihan_restoapp/data/api/api_service.dart';
 import 'package:latihan_restoapp/data/model/restaurant.dart';
+import 'package:latihan_restoapp/provider/database_provider.dart';
 import 'package:latihan_restoapp/provider/list_restaurants_provider.dart';
 import 'package:latihan_restoapp/ui/detail_restaurant_stful.dart';
 import 'package:provider/provider.dart';
@@ -73,11 +74,21 @@ Widget _buildRestaurantItem(BuildContext context, Restaurant restaurant) {
         Navigator.pushNamed(context, DetailRestaurantStful.routeName, arguments: restaurant.id);
       },
       trailing: ElevatedButton(
-        onPressed: () {
-          // TODO klik tombol visited
-        },
         child: Text('Visited'),
+        onPressed: () {
+          // onPressed / onClick button Visited
+          Provider.of<DatabaseProvider>(context, listen: false).addVisitedRestaurants(restaurant);
+        },
       ),
+
+      // trailing: Provider.of<DatabaseProvider>(context, listen: false).isVisited(restaurant.id) ? Icon(Icons.done) : ElevatedButton(
+      //   child: Text('Visited'),
+      //   onPressed: () {
+      //     // onPressed / onClick button Visited
+      //     Provider.of<DatabaseProvider>(context, listen: false).addVisitedRestaurants(restaurant);
+      //   },
+      // ),
+
     ),
   );
 }

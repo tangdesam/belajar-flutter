@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:latihan_restoapp/data/model/detail_restaurant.dart';
@@ -14,7 +13,13 @@ class ApiService {
     String listRestaurantsUrl = "${url}/list";
 
     final response = await http.get(Uri.parse(listRestaurantsUrl));
-    if (response.statusCode == HttpStatus.ok) {
+    if (response.statusCode == 200) {
+
+      // we don't do that here
+          // if (response.statusCode == HttpStatus.ok) {
+      // HttpStatus is in dart:html package
+      // dart:html is available only to web apps
+
       return ListRestaurantsResult.fromJson(json.decode(response.body));
     }
     else {
@@ -26,7 +31,7 @@ class ApiService {
     String detailRestaurantUrl = "${url}/detail";
 
     final response = await http.get(Uri.parse(detailRestaurantUrl + '/$restaurantId'));
-    if (response.statusCode == HttpStatus.ok) {
+    if (response.statusCode == 200) {
       return DetailRestaurantResult.fromJson(json.decode(response.body));
     }
     else {
