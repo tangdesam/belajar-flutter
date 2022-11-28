@@ -1,5 +1,6 @@
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
@@ -31,6 +32,7 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = new Flut
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
+    name: 'todo-585',
     options: DefaultFirebaseOptions.currentPlatform,
   );
   final NotificationHelper _notificationHelper = NotificationHelper();
@@ -140,6 +142,8 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     _notificationHelper.configureSelectNotificationSubject(ToDoAddUpdatePage.routeName);
+    getFCMToken();
+    FirebaseMessaging.onMessage.listen(showFlutterNotification);
   }
 
   @override
@@ -147,4 +151,15 @@ class _MyAppState extends State<MyApp> {
     selectNotificationSubject.close();
     super.dispose();
   }
+
+  void showFlutterNotification(RemoteMessage message) {
+    debugPrint(">>> Message => $message");
+    String temp = message.notification?.title ?? "";
+    print(">>> Title => " + temp);
+  }
+}
+
+Future<void> getFCMToken() async {
+  final token = await FirebaseMessaging.instance.getToken();
+  print(">>> FCM token: " + token.toString());
 }
