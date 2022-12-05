@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:news_api/data/model/article.dart';
-import 'package:news_api/ui/more_news.dart';
-import 'package:news_api/widgets/news_detail.dart';
-import 'package:news_api/widgets/news_screen.dart';
+import 'package:news_api/data/models/article.dart';
+import 'package:news_api/presentation/pages/more_news.dart';
+import 'package:news_api/presentation/widgets/news_detail.dart';
+import 'package:news_api/presentation/widgets/news_screen.dart';
 
 void main() {
   runApp(const MyApp());

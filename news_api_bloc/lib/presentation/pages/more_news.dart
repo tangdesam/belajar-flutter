@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_api/widgets/custom_scaffold.dart';
+import 'package:news_api/presentation/widgets/custom_scaffold.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class MoreNewsScreen extends StatelessWidget {

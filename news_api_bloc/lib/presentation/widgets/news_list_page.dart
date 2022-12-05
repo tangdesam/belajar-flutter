@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:news_api/data/model/article.dart';
+import 'package:news_api/data/models/article.dart';
+import 'package:news_api/presentation/widgets/news_detail.dart';
 import 'package:news_api/provider/news_provider.dart';
-import 'package:news_api/widgets/news_detail.dart';
 import 'package:provider/provider.dart';
 
 class NewsListPage extends StatelessWidget {

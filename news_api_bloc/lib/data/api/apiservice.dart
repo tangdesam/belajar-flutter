@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import '../model/article_results.dart';
+import 'package:news_api/data/models/article_results.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService {

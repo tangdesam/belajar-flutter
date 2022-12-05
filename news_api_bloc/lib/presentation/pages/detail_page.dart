@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:news_api/data/model/game_info.dart';
+import 'package:news_api/data/models/game_info.dart';
 
 
 class DetailPage extends StatelessWidget {

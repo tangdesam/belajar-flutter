@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:news_api/data/model/article.dart';
-import 'package:news_api/ui/more_news.dart';
+import 'package:news_api/data/models/article.dart';
+import 'package:news_api/presentation/pages/more_news.dart';
+
 
 
 class DetailNewsScreen extends StatelessWidget {

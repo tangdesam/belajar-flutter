@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:news_api/ui/detail_page.dart';
-import 'package:news_api/data/model/game_info.dart';
+import 'package:news_api/presentation/pages/detail_page.dart';
+import 'package:news_api/data/models/game_info.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);

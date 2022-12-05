@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_api/data/api/apiservice.dart';
-import 'package:news_api/data/model/article_results.dart';
+import 'package:news_api/data/models/article_results.dart';
 
 class NewsProvider extends ChangeNotifier{
   final ApiService apiService;

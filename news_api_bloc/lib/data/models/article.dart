@@ -1,8 +1,9 @@
 import 'dart:convert';
 
-import 'package:news_api/data/model/source.dart';
+import 'package:equatable/equatable.dart';
+import 'package:news_api/data/models/source.dart';
 
-class Article {
+class Article extends Equatable {
   Article({
     required this.source,
     required this.author,
@@ -44,6 +45,13 @@ class Article {
     "publishedAt": publishedAt.toIso8601String(),
     "content": content == null ? null : content,
   };
+
+  @override
+  // TODO: implement props
+  // List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [source, author, title, description, url, urlToImage, publishedAt, content];
+
+
 }
 
 List<Article> parseArticles(String? json) {
