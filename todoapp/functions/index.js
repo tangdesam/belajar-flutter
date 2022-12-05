@@ -11,6 +11,8 @@ const {getFirestore, Timestamp, FieldValue} = require("firebase-admin/firestore"
 // });
 
 exports.saveFCMToken = functions.https.onRequest(async(request, response) => {
+        // https://us-central1-todo-585.cloudfunctions.net/saveFCMToken
+
         // supaya ga error CORS, supaya bisa cross origin
         response.set('Access-Controll-Allow-Origin', "*");
         response.set('Access-Controll-Allow-Method', 'GET,POST');
@@ -32,7 +34,9 @@ exports.saveFCMToken = functions.https.onRequest(async(request, response) => {
 );
 
 // contoh kirim notif ke semua pengguna
-exports.sendFCM = functions.https.onRequest(async(request, response) {
+exports.sendFCM = functions.https.onRequest(async(request, response) => {
+        // https://us-central1-todo-585.cloudfunctions.net/sendFCM
+
         // supaya ga error CORS, supaya bisa cross origin
         response.set('Access-Controll-Allow-Origin', "*");
         response.set('Access-Controll-Allow-Method', 'GET,POST');
@@ -48,7 +52,7 @@ exports.sendFCM = functions.https.onRequest(async(request, response) {
             const payLoad = {
                 token: fcmToken,
                 notification: {
-                    title: 'global reminder',
+                    title: 'Global Reminder todoapp',
                     body: message
                 },
                 data: {

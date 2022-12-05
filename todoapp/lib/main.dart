@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -22,6 +24,7 @@ import 'package:todoapp/ui/todoadd_updatepage.dart';
 import 'package:todoapp/ui/todolistpage.dart';
 import 'package:todoapp/utils/backgroundservice.dart';
 import 'package:todoapp/utils/notificationhelper.dart';
+import 'package:http/http.dart' as http;
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
 
@@ -52,6 +55,17 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final NotificationHelper _notificationHelper = NotificationHelper();
+  final CLOUD_FUNCTION_URL = "https://us-central1-todo-585.cloudfunctions.net";
+  Future<void> getFCMToken() async {
+    final token = await FirebaseMessaging.instance.getToken();
+    final client = http.Client();
+    final response = await client.get(
+      Uri.parse("$CLOUD_FUNCTION_URL/saveFCMToken?fcm=$token")
+    );
+    final output = jsonDecode(response.body);
+    print(">>> response saveFCMToken: " + output);
+    print(">>> FCM Token: $token");
+  }
 
   // This widget is the root of your application.
   @override
@@ -153,9 +167,10 @@ class _MyAppState extends State<MyApp> {
   }
 
   void showFlutterNotification(RemoteMessage message) {
-    debugPrint(">>> Message => $message");
     String temp = message.notification?.title ?? "";
     print(">>> Title => " + temp);
+    temp = message.notification?.body ?? "";
+    debugPrint(">>> Message => $temp");
   }
 }
 
