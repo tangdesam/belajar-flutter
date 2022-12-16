@@ -8,7 +8,7 @@ import 'package:news_api/data/models/article_results.dart';
 import 'package:news_api/domain/repositories/news_repository.dart';
 
 class NewsRepositoryImpl implements NewsRepository {
-  final NewsRemoteDataSourceImpl remoteDataSource;
+  final NewsRemoteDataSource remoteDataSource;
 
   NewsRepositoryImpl({required this.remoteDataSource});
 

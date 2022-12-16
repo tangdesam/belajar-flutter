@@ -17,6 +17,10 @@ class NewsSearchEmpty extends NewsSearchState {
   NewsSearchEmpty(this.message);
 }
 
+class NewsSearchLoading extends NewsSearchState {
+
+}
+
 class NewsSearchError extends NewsSearchState {
   final String message;
   final Function? retry;
@@ -37,3 +41,4 @@ class NewsSearchHasData extends NewsSearchState {
   @override
   List<Object> get props => [data];
 }
+
