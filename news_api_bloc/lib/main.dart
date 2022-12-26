@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_api/data/models/article.dart';
 import 'package:news_api/presentation/bloc/news_search/news_search_bloc.dart';
+import 'package:news_api/presentation/pages/load_image.dart';
 import 'package:news_api/presentation/pages/more_news.dart';
 import 'package:news_api/presentation/pages/news_search_screen.dart';
 import 'package:news_api/presentation/widgets/news_detail.dart';
@@ -45,7 +46,8 @@ class MyApp extends StatelessWidget {
         // ),
 
         // initialRoute: NewsScreen.routeName,
-        initialRoute: NewsSearchScreen.routeName,
+        // initialRoute: NewsSearchScreen.routeName, // bloc
+        initialRoute: LoadImageScreen.routeName, // testing camera
 
         routes: {
           NewsScreen.routeName: (context)=>const NewsScreen(),
@@ -56,6 +58,7 @@ class MyApp extends StatelessWidget {
               url: ModalRoute.of(context)?.settings.arguments as String
           ),
           NewsSearchScreen.routeName: (context) => NewsSearchScreen(),
+          LoadImageScreen.routeName: (context) => LoadImageScreen(),
         },
       ),
     );
