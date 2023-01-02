@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_api/data/models/article.dart';
 import 'package:news_api/presentation/bloc/news_search/news_search_bloc.dart';
 import 'package:news_api/presentation/pages/load_image.dart';
+import 'package:news_api/presentation/pages/load_map.dart';
 import 'package:news_api/presentation/pages/more_news.dart';
 import 'package:news_api/presentation/pages/news_search_screen.dart';
 import 'package:news_api/presentation/widgets/news_detail.dart';
@@ -47,7 +48,8 @@ class MyApp extends StatelessWidget {
 
         // initialRoute: NewsScreen.routeName,
         // initialRoute: NewsSearchScreen.routeName, // bloc
-        initialRoute: LoadImageScreen.routeName, // testing camera
+        // initialRoute: LoadImageScreen.routeName, // testing camera
+        initialRoute: LoadMapScreen.routeName, // testing GPS dan google map
 
         routes: {
           NewsScreen.routeName: (context)=>const NewsScreen(),
@@ -59,6 +61,7 @@ class MyApp extends StatelessWidget {
           ),
           NewsSearchScreen.routeName: (context) => NewsSearchScreen(),
           LoadImageScreen.routeName: (context) => LoadImageScreen(),
+          LoadMapScreen.routeName: (context) => LoadMapScreen(),
         },
       ),
     );
